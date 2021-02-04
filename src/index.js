@@ -20,23 +20,31 @@ function obtenerCambios (base = "EUR", fecha = "latest"){ // Parametros por defa
     .then(r => r.rates) // sacamos el objetos de rates para despues sacarle la key
 }
 
-function mostrarListadoMonedas (base) {
-    container = document.createElement("div");
-    container.classlist.add("list-group");
-    monedas.sort().forEach(($item) => {
+function mostrarListadoMonedas (cambios) {
+    let containerDerecha = document.querySelector("#container-derecha");
+    containerDerecha.classList.add("list-group");
+    cambios.sort().forEach((moneda) => {
         let $item = document.createElement("a")
-        $item.classlist.add("list-group-item");
-        $item.textContent = base;
-        $item.dataset.base = base;
+        $item.classList.add("list-group-item");
+        $item.textContent = moneda;
+        $item.dataset.base = moneda;
         $item.addEventListener("click", () => {
             if ($item.class === "list-group-item-active") {
                 return undefined
             }
-            $item.classlist.add("-active")
+            $item.classList.add("-active")
             actualizar
         })
-        $item.appendChild(monedas)
+        $item.appendChild(containerDerecha)
     })
+
+}
+
+function obtenerFechaSeleccionada () {
+    const fechaSeleccionada = document.querySelector("#fecha").value;
+    return fechaSeleccionada || undefined;
+}
+function obtenerBaseSeleccionada () {
 
 }
 
@@ -46,11 +54,11 @@ function obtenerMonedas () {
 
 function actualizar () {
     mostrarCargando()
-    obtenerCambios(obtenerFechaSeleccionada(), obtenerBaseSeleccionada())
+    obtenerCambios(obtenerBaseSeleccionada(), obtenerFechaSeleccionada())
 }
 
 function inicializar (){
-    obtenerMonedas().then(mostrarListadoMonedas())
+    obtenerMonedas().then(resultado => mostrarListadoMonedas(resultado))
     configurarFecha()
 }
 
