@@ -21,23 +21,25 @@ function obtenerCambios (base = "EUR", fecha = "latest"){ // Parametros por defa
 }
 
 function mostrarListadoMonedas (cambios) {
-    let containerDerecha = document.querySelector("#container-derecha");
-    containerDerecha.classList.add("list-group");
+    let $container = document.createElement("div");
+    $container.classList.add("list-group");
     cambios.sort().forEach((moneda) => {
         let $item = document.createElement("a")
-        $item.classList.add("list-group-item");
+        $item.classList.add("list-group-item", "list-group-item-action");
         $item.textContent = moneda;
         $item.dataset.base = moneda;
         $item.addEventListener("click", () => {
-            if ($item.class === "list-group-item-active") {
-                return undefined
+            const $itemActivo = document.querySelector(".list-group-item.active")
+            if ($itemActivo) {
+                console.log("borramos: ", $item)
+                return $itemActivo.classList.remove("active")
             }
-            $item.classList.add("-active")
-            actualizar
+            $item.classList.add("active")
+            //actualizar()
         })
-        $item.appendChild(containerDerecha)
+        $container.appendChild($item)
     })
-
+    document.querySelector("#monedas").appendChild($container)
 }
 
 function obtenerFechaSeleccionada () {
