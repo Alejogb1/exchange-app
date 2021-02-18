@@ -6,6 +6,7 @@ export function mostrarListadoMonedas (cambios, callback) {
         $item.classList.add("list-group-item", "list-group-item-action");
         $item.textContent = moneda;
         $item.dataset.base = moneda;
+
         $item.addEventListener("click", () => {
             const $itemActivo = document.querySelector(".list-group-item.active")
             if ($itemActivo) {
@@ -33,4 +34,29 @@ export function mostrarCambios(cambios) {
       $fila.appendChild($cambio);
       $cambios.appendChild($fila);
     });
+}
+
+export function mostrarCargando () {
+    document.querySelector("#cambio").innerHTML = "Cargando..."
+
+}
+
+export function configurarFecha (callback) {
+    const $inputFecha = document.querySelector("#fecha-input")
+    // formato YYYY-MM-DD
+    const hoy = (new Date().toISOString().split("T")[0]) 
+    console.log(hoy)
+    //1. HOY crea nuevo objeto "Date", max necesita el formato YYYY-MM-DD
+    //2. toISOString me lo soluciona
+    //3. Split en la t, da array con dos posiciones. El [0] es la izquierda
+
+    $inputFecha.setAttribute= ("max", hoy);
+    console.log($inputFecha.setAttribute)
+    $inputFecha.addEventListener("change", callback)
+    console.log("se ejecuta input fecha")
+}
+
+export function setPrimerItemActivo (callback) {
+    document.querySelectorAll(".list-group-item.list-group-item-action")[0].classList.add("active")
+    callback()
 }
