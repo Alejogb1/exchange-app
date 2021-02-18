@@ -6,13 +6,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-    <input type="date" max="2020-08-03" id="fecha-input">
-    <div class="container row">
+   
+    <h3 style="text-align: center;">Bienvendio a casa de cambio!</h3>
+    <p style="text-align: center;">Aplicación que utiliza como servicio a <a href="https://exchangeratesapi.io/">https://exchangeratesapi.io/</a> para mostrar los valores de cambios de las divisas.</p>
+    <p style="text-align: center;">Para utilizar la app, apreta algun simbolo de una divisa a la izquierda. A la derecha se mostrara los valores para esa misma moneda.</p>
+    <div style="margin: 0 auto; display: flex; justify-content: center; margin-bottom: 40px;" class="row">
+      <p style="margin-right: 40px;">Tambien puedes cambiar de fecha: </p>
+      <input type="date" max="2020-08-03" id="fecha-input">
+    </div>
+    <div class="container row" style="border: 1px solid; border-radius: 20px; overflow: scroll; max-height: 100%; margin: 0 auto;">
         <div id="monedas">
-            
         </div>
-        <div class="" style="margin: 100px;">
-            <table class="table table-dark">
+        <div class="" style="margin: 10px auto; width: 70%;">
+            <table id="tabla" class="table table-dark">
                 <thead>
                   <tr>
                     <th scope="col">Moneda</th>
@@ -20,7 +26,6 @@
                   </tr>
                 </thead>
                 <tbody id="cambio">
-                  
                 </tbody>
               </table>
         </div>
