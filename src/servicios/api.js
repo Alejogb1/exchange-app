@@ -1,11 +1,31 @@
-const BASE_URL = 'https://api.exchangeratesapi.io';
+import * as api from "./exchange.js"
 
-export function obtenerCambios(base = 'EUR', fecha = 'latest') {
-  return fetch(`${BASE_URL}/${fecha}?base=${base}`)
-    .then((r) => r.json())
-    .then((r) => r.rates);
+export async function obtenerCambios (base = 'EUR', fecha = 'latest') {
+    const llaveCache = `cambio_${base}_${fecha}`;
+    const baseCache = localStorage.getItem(llaveCache);
+    if (baseCache) {
+       return JSON.parse(baseCache)
+    }
+
+    const cambios = await api.obtenerCambios(base, fecha)
+
+    localStorage.setItem(llaveCache, JSON.stringify(cambios))
+
+    return cambios
 }
 
-export function obtenerMonedas() {
-  return obtenerCambios().then((r) => Object.keys(r).concat('EUR'));
+export async function obtenerMonedas () {   
+    const llaveCache = "monedas"
+
+    const baseCache = localStorage.getItem(llaveCache)
+
+    if (baseCache) {
+        JSON.parse(baseCache)
+    }
+
+    const monedas = await api.obtenerMonedas()
+
+    localStorage.setItem(llaveCache, JSON.stringify(monedas))
+
+    return monedas;
 }

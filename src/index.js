@@ -1,5 +1,5 @@
 import {mostrarListadoMonedas, mostrarCambios, mostrarCargando, configurarFecha, setPrimerItemActivo} from "./ui.js"
-import {obtenerMonedas, obtenerCambios} from "./api.js"
+import {obtenerMonedas, obtenerCambios} from "./servicios/api.js"
 import {obtenerBaseSeleccionada, obtenerFechaSeleccionada} from "./cambios.js"
 
 
