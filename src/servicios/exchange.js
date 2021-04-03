@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.exchangeratesapi.io';
+const BASE_URL = 'https://api.exchangerate.host/';
 
 export function obtenerCambios(base = 'EUR', fecha = 'latest') {
   return fetch(`${BASE_URL}/${fecha}?base=${base}`)

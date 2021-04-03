@@ -6,7 +6,7 @@ export async function obtenerCambios (base = 'EUR', fecha = 'latest') {
     if (baseCache) {
        return JSON.parse(baseCache)
     }
-
+    console.log("base y fecha", base, fecha)
     const cambios = await api.obtenerCambios(base, fecha)
 
     localStorage.setItem(llaveCache, JSON.stringify(cambios))
