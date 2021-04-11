@@ -1,12 +1,12 @@
-# Casa de Cambio
+# Exchange house
 
-Este es un proyecto de argentinaprograma.com
+This is a project from argentinaprograma.com
 
-## Tópicos cubiertos
+## Topics covered
 
-* Módulos de javascript
-* Interceptar requests de HTTP con cypress
-* Jest para escribir pruebas unitarias (incluyendo code coverage)
-* Babel para transpilar código
-* eslint para configurar nuestro editor de texto
-* npm-run-all para correr tareas en paralelo
+* Javascript modules
+* Intercept HTTP requests with cypress
+* Jest for writing unit tests (including code coverage)
+* Babel to transpile code
+* eslint to configure our text editor
+* npm-run-all to run tasks in parallel
