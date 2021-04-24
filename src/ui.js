@@ -41,7 +41,7 @@ export function mostrarCargando () {
 
 }
 
-export function configurarFecha (callback) {
+export function configurarFecha (callback ) {
     const $inputFecha = document.querySelector("#fecha-input")
     // formato YYYY-MM-DD
     const hoy = (new Date().toISOString().split("T")[0]) 
